@@ -13,8 +13,10 @@ import se.lexicon.dao.StudentDaoImpl;
 @Configuration
 @ComponentScan(basePackages = "se.lexicon.*")
 public class AppConfig {
+
     @Bean("studentDao")
     public StudentDao appUserDao(){
+
         return new StudentDaoImpl();
     }
 }

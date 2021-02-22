@@ -1,7 +1,11 @@
 package se.lexicon.model;
 
 
+
+import se.lexicon.dao.sequencer.Sequencer;
 import java.util.Objects;
+
+
 
 public class Student {
     private String name;
@@ -13,6 +17,11 @@ public class Student {
     public Student(String name, int id) {
         this.name = name;
         this.id = id;
+    }
+
+    public Student(String name) {
+        this.name = name;
+        this.id = Sequencer.nextStudentUserId();
     }
 
     public String getName() {
