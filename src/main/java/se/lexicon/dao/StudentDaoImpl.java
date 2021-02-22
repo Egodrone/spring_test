@@ -15,9 +15,10 @@ public class StudentDaoImpl implements StudentDao {
     @Override
     public Student save(Student student) {
         Student p1 = new Student();
+
         if(student != null) {
-            p1.setId(Sequencer.nextStudentUserId());
-            //p1.setId(student.getId());
+            //p1.setId(Sequencer.nextStudentUserId());
+            p1.setId(student.getId());
             p1.setName(student.getName());
             StudentsReg.add(student);
         }
