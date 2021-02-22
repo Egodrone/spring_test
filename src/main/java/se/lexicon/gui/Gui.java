@@ -23,11 +23,21 @@ public class Gui implements ActionListener {
     private final JLabel jLabel;
     private final JPanel panel;
     private final JButton saveStudentBtn;
-
+    private final JButton deleteBtn;
+    private final JButton findAll;
+    private final Container container;
+    private final JTextField saveTxt;
 
 
     public Gui() {
         frame = new JFrame();
+        panel = new JPanel();
+        container = frame.getContentPane();
+
+        saveTxt = new JTextField(100);
+        Font myFontSize = saveTxt.getFont().deriveFont(Font.BOLD,50f);
+        saveTxt.setFont(myFontSize);
+        container.add(saveTxt, BorderLayout.NORTH);
 
         // save student btn
         saveStudentBtn = new JButton("Save student");
@@ -37,14 +47,14 @@ public class Gui implements ActionListener {
         JButton findBtn = new JButton("Find student");
         JLabel findBtnLabel = new JLabel("Find Student by id");
 
-        final JButton  deleteBtn =  new JButton("Delete");
+        deleteBtn =  new JButton("Delete");
         deleteBtn.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e) {
                 System.out.println("Delete button!");
             }
         });
 
-        final JButton  findAll =  new JButton("Find All");
+        findAll =  new JButton("Find All");
         findAll.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e) {
                 System.out.println("Find All");
@@ -52,9 +62,8 @@ public class Gui implements ActionListener {
         });
 
         // save student
-        panel = new JPanel();
         panel.setBorder(BorderFactory.createEmptyBorder(160, 160, 160, 160));
-        panel.setLayout(new GridLayout());
+        panel.setLayout(new GridLayout(4,4,4,4));
         panel.add(saveStudentBtn);
         panel.add(jLabel);
         panel.add(deleteBtn);
@@ -69,8 +78,6 @@ public class Gui implements ActionListener {
         frame.setTitle(" Student GUI ");
         frame.pack();
         frame.setVisible(true);
-
-
     }
 
 
@@ -91,10 +98,6 @@ public class Gui implements ActionListener {
         jLabel.setText("Added: " + countSaved + ", id: " + cS.getId());
         //jLabel.setText("Added: " + countSaved + ", Name:" + cS.getName() + ", id: " + cS.getId());
     }
-
-
-
-
 
 
 

@@ -17,7 +17,7 @@ public class App
     {
         System.out.println( " Spring Framework " );
 
-        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+        AnnotationConfigApplicationContext context= new AnnotationConfigApplicationContext(AppConfig.class);
         StudentDao dao = context.getBean("studentDao", StudentDao.class);
         Student createdStudent = dao.save(new Student("Test", 1));
         System.out.println("createdStudent = " + createdStudent);
