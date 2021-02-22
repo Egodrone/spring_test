@@ -43,7 +43,7 @@ public class Gui implements ActionListener {
         container = frame.getContentPane();
 
         saveTxt = new JTextField(100);
-        Font myFontSize = saveTxt.getFont().deriveFont(Font.BOLD,50f);
+        Font myFontSize = saveTxt.getFont().deriveFont(Font.BOLD,40f);
         saveTxt.setFont(myFontSize);
         container.add(saveTxt, BorderLayout.NORTH);
 
@@ -86,9 +86,9 @@ public class Gui implements ActionListener {
                     break;
                 }
 
-                System.out.println("Student with id: " + deleteId + " was removed");
+                System.out.println(" Student with id: " + deleteId + " was removed ");
             } else {
-                System.out.println("There is no students left to remove");
+                System.out.println(" There is no students left to remove ");
             }
         });
         panel.add(deleteBtn);
@@ -106,7 +106,7 @@ public class Gui implements ActionListener {
                     System.out.println(iterator.next());
                 }
             } else {
-                System.out.println("There are no students to display.");
+                System.out.println(" There are no students to display. ");
             }
         });
         panel.add(findAll);
@@ -115,7 +115,7 @@ public class Gui implements ActionListener {
 
         exitBtn =  new JButton("Exit");
         exitBtn.addActionListener(e -> {
-            System.out.println("Buy, Buy!!!");
+            System.out.println(" Bye, Bye!!! ");
             System.exit(0);
         });
         panel.add(exitBtn);
@@ -136,7 +136,7 @@ public class Gui implements ActionListener {
         System.out.println("----------- Save student ------------");
         Student cS = dao.save(new Student("Test2"));
         ++countSaved;
-        System.out.println("Call the function to save student " + countSaved);
+        System.out.println(" Call the function to save student " + countSaved);
         jLabel.setText("Added: " + countSaved + ", id: " + cS.getId());
         //jLabel.setText("Added: " + countSaved + ", Name:" + cS.getName() + ", id: " + cS.getId());
     }
