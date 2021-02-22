@@ -2,13 +2,15 @@ package se.lexicon.dao;
 
 
 import se.lexicon.model.Student;
+
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
 
 
 public class StudentDaoImpl implements StudentDao {
-    private List<Student> StudentsReg;
+    private List<Student> StudentsReg = new ArrayList<>();
 
     @Override
     public Student save(Student student) {
@@ -16,6 +18,7 @@ public class StudentDaoImpl implements StudentDao {
         if(student != null) {
             p1.setId(student.getId());
             p1.setName(student.getName());
+            StudentsReg.add(student);
         }
         return p1;
     }
@@ -36,6 +39,7 @@ public class StudentDaoImpl implements StudentDao {
 
     @Override
     public List<Student> findAll() {
+
         return StudentsReg;
     }
 
