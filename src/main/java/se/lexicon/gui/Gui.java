@@ -9,9 +9,6 @@ import se.lexicon.model.Student;
 
 import java.util.Iterator;
 import java.util.List;
-import javax.script.ScriptEngine;
-import javax.script.ScriptEngineManager;
-import javax.script.ScriptException;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -55,6 +52,7 @@ public class Gui implements ActionListener {
 
 
 
+        //saveStudentBtn = new JButton("Save student", new ImageIcon("path/file.gif"));
         saveStudentBtn = new JButton("Save student");
         saveStudentBtn.addActionListener(this::actionPerformed);
         jLabel = new JLabel("Saved Students");
@@ -73,17 +71,20 @@ public class Gui implements ActionListener {
         deleteBtn = new JButton("Delete");
         deleteBtn.addActionListener(e -> {
             List<Student> listOfAllStudents = dao.findAll();
-            listOfAllStudents.forEach(System.out::println);
+
+            if(listOfAllStudents != null) {
+                dao.delete(1);
+                System.out.println("Student with id 1 was removed");
+            } else {
+                System.out.println("Student you want to remove does not exist");
+            }
+
             Iterator iterator = listOfAllStudents.iterator();
 
             while(iterator.hasNext()){
                 System.out.println(iterator.next());
             }
-            if(listOfAllStudents != null) {
-                dao.delete(1);
-            } else {
-                System.out.println("Student you want to remove does not exist");
-            }
+
             System.out.println("Delete button!");
         });
         panel.add(deleteBtn);
