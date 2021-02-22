@@ -10,15 +10,22 @@ import java.awt.event.ActionListener;
 
 
 public class Gui implements ActionListener {
+    private int countSaved = 0;
+    private JFrame frame;
+    private JLabel jLabel;
+    private JPanel panel;
+    private JButton saveStudentBtn;
+
+
 
     public Gui() {
-        JFrame frame = new JFrame();
+        frame = new JFrame();
 
-        JButton saveStudentBtn = new JButton("Save student");
+        saveStudentBtn = new JButton("Save student");
         saveStudentBtn.addActionListener(this::actionPerformed);
-        JLabel jLabel = new JLabel("Saved Students");
+        jLabel = new JLabel("Saved Students");
 
-        JPanel panel = new JPanel();
+        panel = new JPanel();
         panel.setBorder(BorderFactory.createEmptyBorder(160, 160, 140, 140));
         panel.setLayout(new GridLayout());
         panel.add(saveStudentBtn);
