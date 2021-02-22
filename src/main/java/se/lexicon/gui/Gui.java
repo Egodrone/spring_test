@@ -75,9 +75,13 @@ public class Gui implements ActionListener {
 
             //adjust for id
             if(listOfAllStudents.size() > 0) {
-                deleteId = listOfAllStudents.size();
-                dao.delete(deleteId);
-                System.out.println("Student with id:" + deleteId + " was removed");
+                for (Student studentList : listOfAllStudents) {
+                    deleteId = studentList.getId();
+                    dao.delete(deleteId);
+                    break;
+                }
+
+                System.out.println("Student with id: " + deleteId + " was removed");
             } else {
                 System.out.println("There is no students left to remove");
             }
