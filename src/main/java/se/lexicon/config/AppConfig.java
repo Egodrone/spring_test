@@ -7,6 +7,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import se.lexicon.dao.StudentDao;
 import se.lexicon.dao.StudentDaoImpl;
+import se.lexicon.gui.Gui;
 
 
 
@@ -15,8 +16,19 @@ import se.lexicon.dao.StudentDaoImpl;
 public class AppConfig {
 
     @Bean("studentDao")
-    public StudentDao appUserDao(){
+    public StudentDao studentDao(){
 
         return new StudentDaoImpl();
     }
+
+
+    /*
+    @Bean("guiStudent")
+    public Gui gui(){
+
+        return new Gui();
+    }
+    */
+
+
 }

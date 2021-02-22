@@ -2,6 +2,11 @@ package se.lexicon.gui;
 
 
 
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import se.lexicon.config.AppConfig;
+import se.lexicon.dao.StudentDao;
+import se.lexicon.model.Student;
+import java.util.List;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -48,10 +53,12 @@ public class Gui implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        AnnotationConfigApplicationContext context= new AnnotationConfigApplicationContext(AppConfig.class);
+        StudentDao dao = context.getBean("studentDao", StudentDao.class);
+        Student cS = dao.save(new Student("Test2"));
         ++countSaved;
         System.out.println("Call the function to save student " + countSaved);
-        jLabel.setText("Added: " + countSaved + " times");
-
+        jLabel.setText("Added: " + countSaved + ", id: " + cS.getId());
     }
 
 
