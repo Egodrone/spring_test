@@ -2,6 +2,7 @@ package se.lexicon.dao;
 
 
 
+import org.springframework.stereotype.Component;
 import se.lexicon.dao.sequencer.Sequencer;
 import se.lexicon.model.Student;
 import java.util.ArrayList;
@@ -9,6 +10,7 @@ import java.util.List;
 
 
 
+//@Component("studentDao")
 public class StudentDaoImpl implements StudentDao {
     private List<Student> StudentsReg = new ArrayList<>();
 

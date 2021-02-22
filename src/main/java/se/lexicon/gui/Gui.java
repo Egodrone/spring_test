@@ -6,6 +6,8 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import se.lexicon.config.AppConfig;
 import se.lexicon.dao.StudentDao;
 import se.lexicon.model.Student;
+
+import java.util.Iterator;
 import java.util.List;
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
@@ -18,6 +20,9 @@ import java.awt.event.ActionListener;
 
 
 public class Gui implements ActionListener {
+    private AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+    StudentDao dao = context.getBean("studentDao", StudentDao.class);
+
     private int countSaved = 0;
 
     private final JFrame frame;
@@ -34,6 +39,7 @@ public class Gui implements ActionListener {
     private final JTextField saveTxt;
 
 
+
     public Gui() {
         frame = new JFrame();
         panel = new JPanel();
@@ -44,20 +50,45 @@ public class Gui implements ActionListener {
         saveTxt.setFont(myFontSize);
         container.add(saveTxt, BorderLayout.NORTH);
 
+        panel.setBorder(BorderFactory.createEmptyBorder(160, 160, 160, 160));
+        panel.setLayout(new GridLayout(4,4,4,4));
+
         // save student btn
         saveStudentBtn = new JButton("Save student");
         saveStudentBtn.addActionListener(this::actionPerformed);
         jLabel = new JLabel("Saved Students");
+        panel.add(jLabel);
+        panel.add(saveStudentBtn);
+
+
 
         findBtn = new JButton("Find student");
         JLabel findBtnLabel = new JLabel("Find Student by id");
+        panel.add(findBtnLabel);
+        panel.add(findBtn);
 
-        deleteBtn =  new JButton("Delete");
-        deleteBtn.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent e) {
-                System.out.println("Delete button!");
+
+
+        deleteBtn = new JButton("Delete");
+        deleteBtn.addActionListener(e -> {
+            List<Student> listOfAllStudents = dao.findAll();
+            System.out.println("hhhehhehehhe");
+            listOfAllStudents.forEach(System.out::println);
+            Iterator iterator = listOfAllStudents.iterator();
+
+            while(iterator.hasNext()){
+                System.out.println("next \n" + iterator.next());
             }
+            if(listOfAllStudents != null) {
+                dao.delete(1);
+            } else {
+                System.out.println("Student you want to remove does not exist");
+            }
+            System.out.println("Delete button!");
         });
+        panel.add(deleteBtn);
+
+
 
         findAll =  new JButton("Find All");
         findAll.addActionListener(new ActionListener(){
@@ -65,6 +96,9 @@ public class Gui implements ActionListener {
                 System.out.println("Find All");
             }
         });
+        panel.add(findAll);
+
+
 
         exitBtn =  new JButton("Exit");
         exitBtn.addActionListener(new ActionListener(){
@@ -73,18 +107,9 @@ public class Gui implements ActionListener {
                 System.exit(0);
             }
         });
-
-        // save student
-        panel.setBorder(BorderFactory.createEmptyBorder(160, 160, 160, 160));
-        panel.setLayout(new GridLayout(4,4,4,4));
-        panel.add(saveStudentBtn);
-        panel.add(jLabel);
-        panel.add(deleteBtn);
-        panel.add(findAll);
         panel.add(exitBtn);
-        panel.add(findBtn);
-        //find student by id btn
-        panel.add(findBtnLabel);
+
+
 
         frame.add(panel, BorderLayout.CENTER);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -103,8 +128,8 @@ public class Gui implements ActionListener {
     // Save student
     @Override
     public void actionPerformed(ActionEvent e) {
-        AnnotationConfigApplicationContext context= new AnnotationConfigApplicationContext(AppConfig.class);
-        StudentDao dao = context.getBean("studentDao", StudentDao.class);
+        //AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+        //StudentDao dao = context.getBean("studentDao", StudentDao.class);
         Student cS = dao.save(new Student("Test2"));
         ++countSaved;
         System.out.println("Call the function to save student " + countSaved);
