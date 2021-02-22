@@ -73,11 +73,12 @@ public class Gui implements ActionListener {
             List<Student> listOfAllStudents = dao.findAll();
             int deleteId = 0;
 
-            //adjust for id
             if(listOfAllStudents.size() > 0) {
+
                 for (Student studentList : listOfAllStudents) {
                     deleteId = studentList.getId();
                     dao.delete(deleteId);
+
                     break;
                 }
 
