@@ -19,12 +19,17 @@ import java.awt.event.ActionListener;
 
 public class Gui implements ActionListener {
     private int countSaved = 0;
+
     private final JFrame frame;
     private final JLabel jLabel;
     private final JPanel panel;
+
     private final JButton saveStudentBtn;
     private final JButton deleteBtn;
     private final JButton findAll;
+    private final JButton exitBtn;
+    private final JButton findBtn;
+
     private final Container container;
     private final JTextField saveTxt;
 
@@ -44,7 +49,7 @@ public class Gui implements ActionListener {
         saveStudentBtn.addActionListener(this::actionPerformed);
         jLabel = new JLabel("Saved Students");
 
-        JButton findBtn = new JButton("Find student");
+        findBtn = new JButton("Find student");
         JLabel findBtnLabel = new JLabel("Find Student by id");
 
         deleteBtn =  new JButton("Delete");
@@ -61,6 +66,14 @@ public class Gui implements ActionListener {
             }
         });
 
+        exitBtn =  new JButton("Exit");
+        exitBtn.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("Buy, Buy!!!");
+                System.exit(0);
+            }
+        });
+
         // save student
         panel.setBorder(BorderFactory.createEmptyBorder(160, 160, 160, 160));
         panel.setLayout(new GridLayout(4,4,4,4));
@@ -68,9 +81,9 @@ public class Gui implements ActionListener {
         panel.add(jLabel);
         panel.add(deleteBtn);
         panel.add(findAll);
-
-        //find student by id btn
+        panel.add(exitBtn);
         panel.add(findBtn);
+        //find student by id btn
         panel.add(findBtnLabel);
 
         frame.add(panel, BorderLayout.CENTER);
