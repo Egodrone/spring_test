@@ -14,7 +14,7 @@ public class App
 {
     public static void main( String[] args )
     {
-        System.out.println( "Spring" );
+        System.out.println( " Spring Framework " );
 
         AnnotationConfigApplicationContext context= new AnnotationConfigApplicationContext(AppConfig.class);
         StudentDao dao = context.getBean("studentDao", StudentDao.class);
@@ -35,7 +35,6 @@ public class App
 
         dao.delete(1);
         listStudents.forEach(System.out::println);
-
 
 
 
