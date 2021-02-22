@@ -7,6 +7,9 @@ import se.lexicon.config.AppConfig;
 import se.lexicon.dao.StudentDao;
 import se.lexicon.model.Student;
 import java.util.List;
+import javax.script.ScriptEngine;
+import javax.script.ScriptEngineManager;
+import javax.script.ScriptException;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -34,12 +37,28 @@ public class Gui implements ActionListener {
         JButton findBtn = new JButton("Find student");
         JLabel findBtnLabel = new JLabel("Find Student by id");
 
+        final JButton  deleteBtn =  new JButton("Delete");
+        deleteBtn.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("Delete button!");
+            }
+        });
+
+        final JButton  findAll =  new JButton("Find All");
+        findAll.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("Find All");
+            }
+        });
+
         // save student
         panel = new JPanel();
         panel.setBorder(BorderFactory.createEmptyBorder(160, 160, 160, 160));
         panel.setLayout(new GridLayout());
         panel.add(saveStudentBtn);
         panel.add(jLabel);
+        panel.add(deleteBtn);
+        panel.add(findAll);
 
         //find student by id btn
         panel.add(findBtn);
@@ -50,6 +69,8 @@ public class Gui implements ActionListener {
         frame.setTitle(" Student GUI ");
         frame.pack();
         frame.setVisible(true);
+
+
     }
 
 
@@ -70,6 +91,10 @@ public class Gui implements ActionListener {
         jLabel.setText("Added: " + countSaved + ", id: " + cS.getId());
         //jLabel.setText("Added: " + countSaved + ", Name:" + cS.getName() + ", id: " + cS.getId());
     }
+
+
+
+
 
 
 
