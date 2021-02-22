@@ -28,6 +28,4 @@ public class StudentDaoImpl implements StudentDao {
     public void delete(int id) {
 
     }
-
-    //public static
 }
