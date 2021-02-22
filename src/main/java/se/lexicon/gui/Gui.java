@@ -11,10 +11,10 @@ import java.awt.event.ActionListener;
 
 public class Gui implements ActionListener {
     private int countSaved = 0;
-    private JFrame frame;
-    private JLabel jLabel;
-    private JPanel panel;
-    private JButton saveStudentBtn;
+    private final JFrame frame;
+    private final JLabel jLabel;
+    private final JPanel panel;
+    private final JButton saveStudentBtn;
 
 
 
@@ -26,7 +26,7 @@ public class Gui implements ActionListener {
         jLabel = new JLabel("Saved Students");
 
         panel = new JPanel();
-        panel.setBorder(BorderFactory.createEmptyBorder(160, 160, 140, 140));
+        panel.setBorder(BorderFactory.createEmptyBorder(160, 160, 160, 160));
         panel.setLayout(new GridLayout());
         panel.add(saveStudentBtn);
         panel.add(jLabel);
@@ -39,16 +39,19 @@ public class Gui implements ActionListener {
     }
 
 
-
+    /*
     public static void main(String[] args) {
         Gui gui = new Gui();
-    }
+    }*/
 
 
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        System.out.println("Call the function to save student");
+        ++countSaved;
+        System.out.println("Call the function to save student " + countSaved);
+        jLabel.setText("Added: " + countSaved + " times");
+
     }
 
 

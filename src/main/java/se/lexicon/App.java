@@ -5,6 +5,7 @@ package se.lexicon;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import se.lexicon.config.AppConfig;
 import se.lexicon.dao.StudentDao;
+import se.lexicon.gui.Gui;
 import se.lexicon.model.Student;
 import java.util.List;
 
@@ -36,6 +37,12 @@ public class App
         dao.delete(1);
         listStudents.forEach(System.out::println);
 
+
+        /*
+         *  Test simple GUI interface
+         */
+        Gui gui = new Gui();
+        //gui.actionPerformed();
 
 
     }
