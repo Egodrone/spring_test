@@ -62,6 +62,9 @@ public class Gui implements ActionListener {
 
 
         findBtn = new JButton("Find student");
+        findBtn.addActionListener(e -> {
+            System.out.println("---------- Find Student By Id ------------");
+        });
         JLabel findBtnLabel = new JLabel("Find Student by id");
         panel.add(findBtnLabel);
         panel.add(findBtn);
@@ -70,6 +73,7 @@ public class Gui implements ActionListener {
 
         deleteBtn = new JButton("Delete");
         deleteBtn.addActionListener(e -> {
+            System.out.println("---------- Delete ------------");
             List<Student> listOfAllStudents = dao.findAll();
             int deleteId = 0;
 
@@ -86,8 +90,6 @@ public class Gui implements ActionListener {
             } else {
                 System.out.println("There is no students left to remove");
             }
-
-            System.out.println("Delete button!");
         });
         panel.add(deleteBtn);
 
@@ -95,12 +97,16 @@ public class Gui implements ActionListener {
 
         findAll =  new JButton("Find All");
         findAll.addActionListener(e -> {
-            System.out.println("Find All:");
+            System.out.println("---------- Find All ------------");
             List<Student> listOfAllStudents = dao.findAll();
             Iterator iterator = listOfAllStudents.iterator();
 
-            while(iterator.hasNext()){
-                System.out.println(iterator.next());
+            if(listOfAllStudents.size() > 0) {
+                while (iterator.hasNext()) {
+                    System.out.println(iterator.next());
+                }
+            } else {
+                System.out.println("There are no students to display.");
             }
         });
         panel.add(findAll);
@@ -127,6 +133,7 @@ public class Gui implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        System.out.println("----------- Save student ------------");
         Student cS = dao.save(new Student("Test2"));
         ++countSaved;
         System.out.println("Call the function to save student " + countSaved);
