@@ -1,10 +1,9 @@
 package se.lexicon.dao;
 
 
-import se.lexicon.model.Student;
 
+import se.lexicon.model.Student;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 
 

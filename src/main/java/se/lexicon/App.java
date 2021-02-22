@@ -6,8 +6,8 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import se.lexicon.config.AppConfig;
 import se.lexicon.dao.StudentDao;
 import se.lexicon.model.Student;
-
 import java.util.List;
+
 
 
 public class App
