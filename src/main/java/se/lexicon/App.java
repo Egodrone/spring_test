@@ -39,7 +39,7 @@ public class App
 
 
         /*
-         *  Test simple GUI interface
+         *  GUI interface
          */
 
         Gui gui = new Gui();

@@ -71,18 +71,15 @@ public class Gui implements ActionListener {
         deleteBtn = new JButton("Delete");
         deleteBtn.addActionListener(e -> {
             List<Student> listOfAllStudents = dao.findAll();
+            int deleteId = 0;
 
-            if(listOfAllStudents != null) {
-                dao.delete(1);
-                System.out.println("Student with id 1 was removed");
+            //adjust for id
+            if(listOfAllStudents.size() > 0) {
+                deleteId = listOfAllStudents.size();
+                dao.delete(deleteId);
+                System.out.println("Student with id:" + deleteId + " was removed");
             } else {
-                System.out.println("Student you want to remove does not exist");
-            }
-
-            Iterator iterator = listOfAllStudents.iterator();
-
-            while(iterator.hasNext()){
-                System.out.println(iterator.next());
+                System.out.println("There is no students left to remove");
             }
 
             System.out.println("Delete button!");
@@ -92,9 +89,13 @@ public class Gui implements ActionListener {
 
 
         findAll =  new JButton("Find All");
-        findAll.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent e) {
-                System.out.println("Find All");
+        findAll.addActionListener(e -> {
+            System.out.println("Find All:");
+            List<Student> listOfAllStudents = dao.findAll();
+            Iterator iterator = listOfAllStudents.iterator();
+
+            while(iterator.hasNext()){
+                System.out.println(iterator.next());
             }
         });
         panel.add(findAll);
