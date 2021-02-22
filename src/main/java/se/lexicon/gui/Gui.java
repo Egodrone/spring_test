@@ -21,7 +21,7 @@ import java.awt.event.ActionListener;
 
 public class Gui implements ActionListener {
     private AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
-    StudentDao dao = context.getBean("studentDao", StudentDao.class);
+    private StudentDao dao = context.getBean("studentDao", StudentDao.class);
 
     private int countSaved = 0;
 
@@ -53,7 +53,8 @@ public class Gui implements ActionListener {
         panel.setBorder(BorderFactory.createEmptyBorder(160, 160, 160, 160));
         panel.setLayout(new GridLayout(4,4,4,4));
 
-        // save student btn
+
+
         saveStudentBtn = new JButton("Save student");
         saveStudentBtn.addActionListener(this::actionPerformed);
         jLabel = new JLabel("Saved Students");
@@ -72,12 +73,11 @@ public class Gui implements ActionListener {
         deleteBtn = new JButton("Delete");
         deleteBtn.addActionListener(e -> {
             List<Student> listOfAllStudents = dao.findAll();
-            System.out.println("hhhehhehehhe");
             listOfAllStudents.forEach(System.out::println);
             Iterator iterator = listOfAllStudents.iterator();
 
             while(iterator.hasNext()){
-                System.out.println("next \n" + iterator.next());
+                System.out.println(iterator.next());
             }
             if(listOfAllStudents != null) {
                 dao.delete(1);
@@ -101,11 +101,9 @@ public class Gui implements ActionListener {
 
 
         exitBtn =  new JButton("Exit");
-        exitBtn.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent e) {
-                System.out.println("Buy, Buy!!!");
-                System.exit(0);
-            }
+        exitBtn.addActionListener(e -> {
+            System.out.println("Buy, Buy!!!");
+            System.exit(0);
         });
         panel.add(exitBtn);
 
@@ -119,17 +117,9 @@ public class Gui implements ActionListener {
     }
 
 
-    /*
-    public static void main(String[] args) {
-        Gui gui = new Gui();
-    }*/
 
-
-    // Save student
     @Override
     public void actionPerformed(ActionEvent e) {
-        //AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
-        //StudentDao dao = context.getBean("studentDao", StudentDao.class);
         Student cS = dao.save(new Student("Test2"));
         ++countSaved;
         System.out.println("Call the function to save student " + countSaved);
