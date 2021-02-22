@@ -20,5 +20,7 @@ public class App
         Student createdStudent = dao.save(new Student("Test", 1));
         System.out.println("createdStudent = " + createdStudent);
 
+
+
     }
 }
