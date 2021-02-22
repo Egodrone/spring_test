@@ -12,9 +12,14 @@ public class Gui {
     public Gui() {
         JFrame frame = new JFrame();
 
+        JButton saveStudentBtn = new JButton("Save student");
+        JLabel jLabel = new JLabel("Saved Students");
+
         JPanel panel = new JPanel();
         panel.setBorder(BorderFactory.createEmptyBorder(160, 160, 140, 140));
         panel.setLayout(new GridLayout());
+        panel.add(saveStudentBtn);
+        panel.add(jLabel);
 
         frame.add(panel, BorderLayout.CENTER);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
