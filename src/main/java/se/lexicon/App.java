@@ -7,6 +7,7 @@ import se.lexicon.config.AppConfig;
 import se.lexicon.dao.StudentDao;
 import se.lexicon.gui.Gui;
 import se.lexicon.model.Student;
+import se.lexicon.service.StudentManagement;
 import java.util.List;
 
 
@@ -45,6 +46,8 @@ public class App
         Gui gui = new Gui();
         //StudentDao gui = context.getBean("guiStudent", Gui.class);
         //gui.actionPerformed();
+
+        StudentManagement managementDao = context.getBean("studentManagementDao", StudentManagement.class);
 
 
     }

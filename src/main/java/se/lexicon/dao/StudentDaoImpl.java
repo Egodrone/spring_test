@@ -10,7 +10,7 @@ import java.util.List;
 
 
 
-//@Component("studentDao")
+@Component("studentDao")
 public class StudentDaoImpl implements StudentDao {
     private List<Student> StudentsReg = new ArrayList<>();
 
