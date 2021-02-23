@@ -12,6 +12,7 @@ import se.lexicon.service.StudentManagement;
 import se.lexicon.service.StudentManagementConsoleImpl;
 
 
+
 @Configuration
 @ComponentScan(basePackages = "se.lexicon.*")
 public class AppConfig {

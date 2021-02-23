@@ -8,6 +8,7 @@ import se.lexicon.dao.StudentDao;
 import se.lexicon.gui.Gui;
 import se.lexicon.model.Student;
 import se.lexicon.service.StudentManagement;
+import se.lexicon.util.UserInputService;
 import java.util.List;
 
 
@@ -47,7 +48,17 @@ public class App
         //StudentDao gui = context.getBean("guiStudent", Gui.class);
         //gui.actionPerformed();
 
-        StudentManagement managementDao = context.getBean("studentManagementDao", StudentManagement.class);
+        StudentManagement managementService = context.getBean("studentManagementDao", StudentManagement.class);
+        Student createStudent1 = managementService.create();
+        System.out.println(createStudent1.toString());
+
+        System.out.println("************************************");
+
+        //Util
+        UserInputService userInputService = context.getBean(UserInputService.class);
+        String testUtil = userInputService.getString();
+        System.out.println(testUtil);
+
 
 
     }

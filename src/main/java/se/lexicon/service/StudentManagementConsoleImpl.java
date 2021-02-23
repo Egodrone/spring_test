@@ -13,7 +13,9 @@ public class StudentManagementConsoleImpl implements StudentManagement{
 
     @Override
     public Student create() {
-        return null;
+        Student newStudent = new Student("Sonja");
+
+        return newStudent;
     }
 
 
