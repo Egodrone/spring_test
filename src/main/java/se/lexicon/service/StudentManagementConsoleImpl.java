@@ -53,9 +53,7 @@ public class StudentManagementConsoleImpl implements StudentManagement {
 
     @Override
     public Student find(int id) {
-        if (id == 0){
-            throw new IllegalArgumentException(" Student id is not valid ");
-        }
+        if (id < 1) throw new IllegalArgumentException(" Student id is not valid ");
 
         return studentDao.find(id);
     }
@@ -64,7 +62,16 @@ public class StudentManagementConsoleImpl implements StudentManagement {
 
     @Override
     public Student remove(int id) {
-        return null;
+        if (id < 1) throw new IllegalArgumentException(" Student id is not valid ");
+        //if student with that id exist, call function below
+        Student tmpStudent = find(id);
+        if(tmpStudent.getName() != null) {
+            studentDao.delete(id);
+        } else {
+            throw new IllegalArgumentException(" There is no student with provided id ");
+        }
+
+        return tmpStudent;
     }
 
 

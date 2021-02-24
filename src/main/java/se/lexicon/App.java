@@ -69,6 +69,7 @@ public class App
         System.out.println("+++++++++ Service layer +++++++++++++");
         StudentManagementConsoleImpl studentManagementConsole =
                 context.getBean("studentManagementService", StudentManagementConsoleImpl.class);
+        System.out.println("------------------- Create new student -------------------");
 
         System.out.println("------------------- Save new student -------------------");
         Student createdStudent3 = studentManagementConsole.save(new Student("Nils", 900));
@@ -78,6 +79,14 @@ public class App
         System.out.println("------------------- Find student by id -------------------");
         Student findStudentById = studentManagementConsole.find(900);
         System.out.println(findStudentById.toString());
+
+        System.out.println("------------------- Find all students -------------------");
+        List<Student> listOfAllStudents = studentManagementConsole.findAll();
+        listOfAllStudents.forEach(System.out::println);
+
+        System.out.println("------------------- Remove student -------------------");
+        Student studentToRemove = studentManagementConsole.remove(900);
+        System.out.println(" Removed student: " + studentToRemove);
 
 
 
