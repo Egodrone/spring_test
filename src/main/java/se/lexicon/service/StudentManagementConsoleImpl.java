@@ -92,7 +92,10 @@ public class StudentManagementConsoleImpl implements StudentManagement {
         Student findByIdStudent = find(studentId);
 
         if(findByIdStudent == null) throw new IllegalArgumentException("Student id is null");
+        String newStudentName = userInputService.getString();
+        findByIdStudent.setName(newStudentName);
         student.setName(findByIdStudent.getName());
+        //student.setName(findByIdStudent.getName());
 
         return student;
     }
