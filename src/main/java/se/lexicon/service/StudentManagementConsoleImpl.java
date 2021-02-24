@@ -88,7 +88,10 @@ public class StudentManagementConsoleImpl implements StudentManagement {
     @Override
     public Student edit(Student student) {
         int studentId = userInputService.getInt();
+        System.out.println("!!!!!!!!!!! " + studentId);
         Student findByIdStudent = find(studentId);
+
+        if(findByIdStudent == null) throw new IllegalArgumentException("Student id is null");
         student.setName(findByIdStudent.getName());
 
         return student;
