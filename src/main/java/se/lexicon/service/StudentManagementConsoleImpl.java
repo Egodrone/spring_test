@@ -44,6 +44,8 @@ public class StudentManagementConsoleImpl implements StudentManagement {
 
     @Override
     public Student save(Student student) {
+        if (student == null) throw new IllegalArgumentException(" Student is null ");
+        if (student.getName() == null) throw new IllegalArgumentException(" Student name is null ");
         return studentDao.save(student);
     }
 
@@ -51,7 +53,11 @@ public class StudentManagementConsoleImpl implements StudentManagement {
 
     @Override
     public Student find(int id) {
-        return null;
+        if (id == 0){
+            throw new IllegalArgumentException(" Student id is not valid ");
+        }
+
+        return studentDao.find(id);
     }
 
 
@@ -65,7 +71,7 @@ public class StudentManagementConsoleImpl implements StudentManagement {
 
     @Override
     public List<Student> findAll() {
-        return null;
+        return studentDao.findAll();
     }
 
 

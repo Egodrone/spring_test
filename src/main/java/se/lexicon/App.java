@@ -68,8 +68,16 @@ public class App
         //Service
         System.out.println("+++++++++ Service layer +++++++++++++");
         StudentManagementConsoleImpl studentManagementConsole =
-                context.getBean("studentManagementService",
-                        StudentManagementConsoleImpl.class);
+                context.getBean("studentManagementService", StudentManagementConsoleImpl.class);
+
+        System.out.println("------------------- Save new student -------------------");
+        Student createdStudent3 = studentManagementConsole.save(new Student("Nils", 900));
+        //Student createdStudent4 = studentManagementConsole.save(new Student());
+        System.out.println(createdStudent3.toString());
+
+        System.out.println("------------------- Find student by id -------------------");
+        Student findStudentById = studentManagementConsole.find(900);
+        System.out.println(findStudentById.toString());
 
 
 
