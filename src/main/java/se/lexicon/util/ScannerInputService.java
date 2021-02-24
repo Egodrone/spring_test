@@ -2,9 +2,7 @@ package se.lexicon.util;
 
 
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 import java.util.Scanner;
 
@@ -19,8 +17,14 @@ public class ScannerInputService implements UserInputService {
     @Override
     public String getString() {
         //string from the scanner
-        String test = "test of the ScannerInputService";
-        return test;
+        scanner = getScanner();
+        System.out.println(" Enter name of the student: ");
+        String scannerValue = scanner.nextLine();
+
+        if(scannerValue.length() < 1) throw new IllegalArgumentException(" Name is too short ");
+        if(scannerValue.length() > 20) throw new IllegalArgumentException(" Name is too long ");
+
+        return scannerValue;
     }
 
 
@@ -45,7 +49,7 @@ public class ScannerInputService implements UserInputService {
     }
 
 
-
+    @Bean
     public Scanner getScanner() {
         return new Scanner(System.in);
     }

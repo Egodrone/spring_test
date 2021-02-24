@@ -46,7 +46,7 @@ public class App
          *  GUI interface
          */
 
-        Gui gui = new Gui();
+        //Gui gui = new Gui();
         //StudentDao gui = context.getBean("guiStudent", Gui.class);
         //gui.actionPerformed();
 
