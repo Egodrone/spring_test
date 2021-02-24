@@ -87,7 +87,11 @@ public class StudentManagementConsoleImpl implements StudentManagement {
 
     @Override
     public Student edit(Student student) {
-        return null;
+        int studentId = userInputService.getInt();
+        Student findByIdStudent = find(studentId);
+        student.setName(findByIdStudent.getName());
+
+        return student;
     }
 
 
