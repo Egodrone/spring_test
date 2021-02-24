@@ -52,8 +52,8 @@ public class App
 
         System.out.println("************************************");
         StudentManagement managementService = context.getBean("studentManagementService", StudentManagement.class);
-        Student createStudent1 = managementService.create();
-        System.out.println(createStudent1.toString());
+        //Student createStudent1 = managementService.create();
+        //System.out.println(createStudent1.toString());
 
         System.out.println("************************************");
 
@@ -85,9 +85,9 @@ public class App
         Student studentToRemove = studentManagementConsole.remove(900);
         System.out.println(" Removed student: " + studentToRemove);
 
-        System.out.println("------------------- Scanner??? -------------------");
-        System.out.println(" Type in name that you want to add: ");
+        System.out.println("------------------- Scanner (Create Student) -------------------");
         Student testStudent8 = studentManagementConsole.create();
+        System.out.println(testStudent8.toString());
 
 
     }

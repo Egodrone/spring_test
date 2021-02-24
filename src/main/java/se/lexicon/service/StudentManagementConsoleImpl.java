@@ -35,10 +35,8 @@ public class StudentManagementConsoleImpl implements StudentManagement {
 
     @Override
     public Student create() {
-        //fix
-        Student newStudent = new Student("Sonja");
-
-        System.out.println(userInputService.getInt());
+        String studentToAdd = userInputService.getString();
+        Student newStudent = new Student(studentToAdd);
 
         return newStudent;
     }
