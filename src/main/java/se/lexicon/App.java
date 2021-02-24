@@ -96,6 +96,9 @@ public class App
         Student editStudent = studentManagementConsole.edit(createdStudent31);
         System.out.println(editStudent.toString());
 
+
+        //
+
 /*        GuiService guiService =
                 context.getBean("guiService", GuiService.class);*/
 

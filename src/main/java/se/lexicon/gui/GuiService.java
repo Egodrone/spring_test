@@ -20,16 +20,18 @@ import java.util.List;
 public class GuiService implements ActionListener {
 
     private AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
-    StudentManagementConsoleImpl dao =
+    StudentManagementConsoleImpl studentManagementService =
             context.getBean("studentManagementService", StudentManagementConsoleImpl.class);
 
     private int countSaved = 0;
 
     private final JFrame frame;
     private final JLabel jLabel;
+    //private final JLabel createLabel;
     private final JPanel panel;
 
     private final JButton saveStudentBtn;
+    private final JButton createStudentBtn;
     private final JButton deleteBtn;
     private final JButton findAll;
     private final JButton exitBtn;
@@ -56,10 +58,32 @@ public class GuiService implements ActionListener {
 
 
         //saveStudentBtn = new JButton("Save student", new ImageIcon("path/file.gif"));
+        /*
         saveStudentBtn = new JButton("Save student");
         saveStudentBtn.addActionListener(this::actionPerformed);
         jLabel = new JLabel("Saved Students");
         panel.add(jLabel);
+        panel.add(saveStudentBtn);
+        */
+
+
+
+        createStudentBtn = new JButton("Create student");
+        createStudentBtn.addActionListener(e -> {
+            System.out.println("---------- Create Student GUI ------------");
+        });
+        jLabel = new JLabel("Create student");
+        panel.add(jLabel);
+        panel.add(createStudentBtn);
+
+
+
+        saveStudentBtn = new JButton("Save student");
+        saveStudentBtn.addActionListener(e -> {
+            System.out.println("---------- Save Student GUI ------------");
+        });
+        //JLabel saveStudent = new JLabel("Save student");
+        //panel.add(saveStudent);
         panel.add(saveStudentBtn);
 
 
@@ -77,14 +101,14 @@ public class GuiService implements ActionListener {
         deleteBtn = new JButton("Delete");
         deleteBtn.addActionListener(e -> {
             System.out.println("---------- Delete ------------");
-            java.util.List<Student> listOfAllStudents = dao.findAll();
+            java.util.List<Student> listOfAllStudents = studentManagementService.findAll();
             int deleteId = 0;
 
             if(listOfAllStudents.size() > 0) {
 
                 for (Student studentList : listOfAllStudents) {
                     deleteId = studentList.getId();
-                    dao.remove(deleteId);
+                    studentManagementService.remove(deleteId);
 
                     break;
                 }
@@ -94,6 +118,8 @@ public class GuiService implements ActionListener {
                 System.out.println(" There is no students left to remove ");
             }
         });
+        JLabel deleteBtnLabel = new JLabel("Delete Student by id");
+        panel.add(deleteBtnLabel);
         panel.add(deleteBtn);
 
 
@@ -101,7 +127,7 @@ public class GuiService implements ActionListener {
         findAll =  new JButton("Find All");
         findAll.addActionListener(e -> {
             System.out.println("---------- Find All ------------");
-            List<Student> listOfAllStudents = dao.findAll();
+            List<Student> listOfAllStudents = studentManagementService.findAll();
             Iterator iterator = listOfAllStudents.iterator();
 
             if(listOfAllStudents.size() > 0) {
@@ -137,7 +163,7 @@ public class GuiService implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         System.out.println("----------- Save student ------------");
-        Student cS = dao.save(new Student("Test2"));
+        Student cS = studentManagementService.save(new Student("Test2"));
         ++countSaved;
         System.out.println(" Call the function to save student " + countSaved);
         jLabel.setText("Added: " + countSaved + ", id: " + cS.getId());
