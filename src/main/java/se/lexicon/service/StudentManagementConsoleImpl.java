@@ -35,7 +35,10 @@ public class StudentManagementConsoleImpl implements StudentManagement {
 
     @Override
     public Student create() {
+        //fix
         Student newStudent = new Student("Sonja");
+
+        System.out.println(userInputService.getInt());
 
         return newStudent;
     }
@@ -46,6 +49,7 @@ public class StudentManagementConsoleImpl implements StudentManagement {
     public Student save(Student student) {
         if (student == null) throw new IllegalArgumentException(" Student is null ");
         if (student.getName() == null) throw new IllegalArgumentException(" Student name is null ");
+
         return studentDao.save(student);
     }
 
@@ -63,8 +67,8 @@ public class StudentManagementConsoleImpl implements StudentManagement {
     @Override
     public Student remove(int id) {
         if (id < 1) throw new IllegalArgumentException(" Student id is not valid ");
-        //if student with that id exist, call function below
         Student tmpStudent = find(id);
+
         if(tmpStudent.getName() != null) {
             studentDao.delete(id);
         } else {

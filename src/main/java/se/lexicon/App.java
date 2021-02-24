@@ -11,7 +11,6 @@ import se.lexicon.service.StudentManagement;
 import se.lexicon.service.StudentManagementConsoleImpl;
 import se.lexicon.util.UserInputService;
 import java.util.List;
-import java.util.Scanner;
 
 
 
@@ -63,8 +62,6 @@ public class App
         String testUtil = userInputService.getString();
         System.out.println(testUtil);
 
-        //Scanner scanner = userInputService.g
-
         //Service
         System.out.println("+++++++++ Service layer +++++++++++++");
         StudentManagementConsoleImpl studentManagementConsole =
@@ -88,6 +85,9 @@ public class App
         Student studentToRemove = studentManagementConsole.remove(900);
         System.out.println(" Removed student: " + studentToRemove);
 
+        System.out.println("------------------- Scanner??? -------------------");
+        System.out.println(" Type in name that you want to add: ");
+        Student testStudent8 = studentManagementConsole.create();
 
 
     }
