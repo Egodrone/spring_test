@@ -16,7 +16,6 @@ public class ScannerInputService implements UserInputService {
 
     @Override
     public String getString() {
-        //string from the scanner
         scanner = getScanner();
         System.out.println(" Enter name of the student: ");
         String scannerValue = scanner.nextLine();
@@ -31,7 +30,6 @@ public class ScannerInputService implements UserInputService {
 
     @Override
     public int getInt() {
-        //int from the scanner
         int tmpInt = 0;
         scanner = getScanner();
         System.out.println(" Enter id of the student: ");
@@ -47,6 +45,7 @@ public class ScannerInputService implements UserInputService {
 
         return tmpInt;
     }
+
 
 
     @Bean

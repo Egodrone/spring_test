@@ -4,12 +4,9 @@ package se.lexicon;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import se.lexicon.config.AppConfig;
-import se.lexicon.dao.StudentDao;
-import se.lexicon.gui.Gui;
+import se.lexicon.gui.GuiService;
 import se.lexicon.model.Student;
-import se.lexicon.service.StudentManagement;
 import se.lexicon.service.StudentManagementConsoleImpl;
-import se.lexicon.util.UserInputService;
 import java.util.List;
 
 
@@ -73,7 +70,7 @@ public class App
 
         System.out.println("------------------- Save new student -------------------");
         Student createdStudent3 = studentManagementConsole.save(new Student("Nils", 900));
-        Student createdStudent30 = studentManagementConsole.save(new Student("Joe"));
+        studentManagementConsole.save(new Student("Joe"));
         //Student createdStudent4 = studentManagementConsole.save(new Student());
         System.out.println(createdStudent3.toString());
 
@@ -92,12 +89,18 @@ public class App
         System.out.println("------------------- Scanner (Create Student) -------------------");
         Student testStudent8 = studentManagementConsole.create();
         System.out.println(testStudent8.toString());
-        //call save method
+        //Save new created student
         Student createdStudent31 = studentManagementConsole.save(testStudent8);
 
         System.out.println("------------------- Scanner (Edit Student) -------------------");
         Student editStudent = studentManagementConsole.edit(createdStudent31);
         System.out.println(editStudent.toString());
+
+/*        GuiService guiService =
+                context.getBean("guiService", GuiService.class);*/
+
+        //GUI test
+        new GuiService();
 
 
     }

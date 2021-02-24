@@ -5,6 +5,7 @@ package se.lexicon.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import se.lexicon.dao.StudentDao;
+import se.lexicon.gui.GuiService;
 import se.lexicon.model.Student;
 import se.lexicon.util.UserInputService;
 import java.util.List;
@@ -16,6 +17,15 @@ public class StudentManagementConsoleImpl implements StudentManagement {
 
     private StudentDao studentDao;
     private UserInputService userInputService;
+    private GuiService guiService;
+
+
+
+    //gui
+/*    @Autowired
+    public void setGuiService(GuiService guiService) {
+        this.guiService = guiService;
+    }*/
 
 
 
@@ -95,7 +105,6 @@ public class StudentManagementConsoleImpl implements StudentManagement {
         String newStudentName = userInputService.getString();
         findByIdStudent.setName(newStudentName);
         student.setName(findByIdStudent.getName());
-        //student.setName(findByIdStudent.getName());
 
         return student;
     }
