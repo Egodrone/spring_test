@@ -20,12 +20,14 @@ public class StudentDaoImpl implements StudentDao {
 
         if(student != null) {
             //p1.setId(Sequencer.nextStudentUserId());
+            //student.setId(Sequencer.nextStudentUserId());
             p1.setId(student.getId());
             p1.setName(student.getName());
             StudentsReg.add(student);
         }
 
         return p1;
+        //return student;
     }
 
 
@@ -34,7 +36,7 @@ public class StudentDaoImpl implements StudentDao {
     public Student find(int id) {
 
         if(id == 0) {
-            throw  new IllegalArgumentException("Id should not be null");
+            throw  new IllegalArgumentException(" Id should not be null ");
         }
 
         return StudentsReg.stream().filter(p1->p1.getId() == id).findFirst().orElse(null);

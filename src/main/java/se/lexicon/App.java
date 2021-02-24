@@ -8,8 +8,10 @@ import se.lexicon.dao.StudentDao;
 import se.lexicon.gui.Gui;
 import se.lexicon.model.Student;
 import se.lexicon.service.StudentManagement;
+import se.lexicon.service.StudentManagementConsoleImpl;
 import se.lexicon.util.UserInputService;
 import java.util.List;
+import java.util.Scanner;
 
 
 
@@ -34,6 +36,7 @@ public class App
         System.out.println("-----------------------------");
         List<Student> listStudents = dao.findAll();
         listStudents.forEach(System.out::println);
+
         System.out.println("-----------------------------");
 
         dao.delete(1);
@@ -48,7 +51,8 @@ public class App
         //StudentDao gui = context.getBean("guiStudent", Gui.class);
         //gui.actionPerformed();
 
-        StudentManagement managementService = context.getBean("studentManagementDao", StudentManagement.class);
+        System.out.println("************************************");
+        StudentManagement managementService = context.getBean("studentManagementService", StudentManagement.class);
         Student createStudent1 = managementService.create();
         System.out.println(createStudent1.toString());
 
@@ -58,6 +62,14 @@ public class App
         UserInputService userInputService = context.getBean(UserInputService.class);
         String testUtil = userInputService.getString();
         System.out.println(testUtil);
+
+        //Scanner scanner = userInputService.g
+
+        //Service
+        System.out.println("+++++++++ Service layer +++++++++++++");
+        StudentManagementConsoleImpl studentManagementConsole =
+                context.getBean("studentManagementService",
+                        StudentManagementConsoleImpl.class);
 
 
 
