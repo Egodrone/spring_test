@@ -81,6 +81,7 @@ public class GuiService implements ActionListener {
         createText.setBounds(100, 20, 165, 25);
         createText.addActionListener(e -> {
             System.out.println("---------- Create field ------------");
+            System.out.println(createText.getText());
         });
         panel.add(createText);
 
@@ -89,7 +90,6 @@ public class GuiService implements ActionListener {
         createStudentBtn = new JButton("Create student");
         createStudentBtn.addActionListener(e -> {
             System.out.println("---------- Create Student GUI ------------");
-            //String newName = createText.getText();
             studentTmp = studentManagementService.create();
             if(!studentTmp.getName().equals("") && studentTmp != null) {
                 displayInfo.setText(" Student with name: " + studentTmp.getName()
@@ -110,8 +110,10 @@ public class GuiService implements ActionListener {
                 throw new IllegalArgumentException("Student was not saved");
             }
             studentSaved = studentManagementService.save(studentTmp);
-            System.out.println("Student was saved: " + studentSaved.getName() + ", and id: " + studentSaved.getId());
-            displayInfo.setText("Student was saved: " + studentSaved.getName() + ", and id: " + studentSaved.getId());
+            System.out.println("Student was saved: " + studentSaved.getName()
+                    + ", and id: " + studentSaved.getId());
+            displayInfo.setText("Student was saved: " + studentSaved.getName()
+                    + ", and id: " + studentSaved.getId());
         });
         panel.add(saveStudentBtn);
 
@@ -131,6 +133,28 @@ public class GuiService implements ActionListener {
             System.out.println("---------- Find Student By Id GUI ------------");
         });
         panel.add(findBtn);
+
+
+
+        findAll =  new JButton("Find All");
+        findAll.addActionListener(e -> {
+            System.out.println("---------- Find All GUI ------------");
+            List<Student> listOfAllStudents = studentManagementService.findAll();
+            Iterator iterator = listOfAllStudents.iterator();
+
+            if(listOfAllStudents.size() > 0) {
+                while(iterator.hasNext()) {
+                    System.out.println(iterator.next());
+                    //String tmpName = iterator.next().toString().trim();
+                    //System.out.println(tmpName);
+                    //displayInfo.setText(iterator.next().toString());
+                }
+            } else {
+                System.out.println(" There are no students to display ");
+                displayInfo.setText(" There are no students to display ");
+            }
+        });
+        panel.add(findAll);
 
 
 
@@ -157,31 +181,9 @@ public class GuiService implements ActionListener {
                 displayInfo.setText(" There is no students left to remove ");
             }
         });
-        JLabel deleteBtnLabel = new JLabel("Remove Student by id");
+        JLabel deleteBtnLabel = new JLabel(" remove by id txt here ");
         panel.add(deleteBtnLabel);
         panel.add(deleteBtn);
-
-
-
-        findAll =  new JButton("Find All");
-        findAll.addActionListener(e -> {
-            System.out.println("---------- Find All GUI ------------");
-            List<Student> listOfAllStudents = studentManagementService.findAll();
-            Iterator iterator = listOfAllStudents.iterator();
-
-            if(listOfAllStudents.size() > 0) {
-                while(iterator.hasNext()) {
-                    System.out.println(iterator.next());
-                    //String tmpName = iterator.next().toString().trim();
-                    //System.out.println(tmpName);
-                    //displayInfo.setText(iterator.next().toString());
-                }
-            } else {
-                System.out.println(" There are no students to display ");
-                displayInfo.setText(" There are no students to display ");
-            }
-        });
-        panel.add(findAll);
 
 
 
@@ -210,8 +212,6 @@ public class GuiService implements ActionListener {
         Student cS = studentManagementService.save(new Student("Test2"));
         ++countSaved;
         System.out.println(" Call the function to save student " + countSaved);
-        //JLabel jLabel;
-        //jLabel.setText("Added: " + countSaved + ", id: " + cS.getId());
     }
 
 
