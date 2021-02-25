@@ -91,6 +91,10 @@ public class GuiService implements ActionListener {
             System.out.println("---------- Create Student GUI ------------");
             //String newName = createText.getText();
             studentTmp = studentManagementService.create();
+            if(!studentTmp.getName().equals("") && studentTmp != null) {
+                displayInfo.setText(" Student with name: " + studentTmp.getName()
+                        + " and id: " + studentTmp.getId() + " is created");
+            }
             System.out.println(studentTmp.toString());
         });
         panel.add(createStudentBtn);
@@ -187,7 +191,6 @@ public class GuiService implements ActionListener {
             System.exit(0);
         });
         panel.add(exitBtn);
-
 
 
 
