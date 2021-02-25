@@ -75,6 +75,7 @@ public class App
         System.out.println(createdStudent3.toString());
 
         System.out.println("------------------- Find student by id -------------------");
+        //add scanner here
         Student findStudentById = studentManagementConsole.find(900);
         System.out.println(findStudentById.toString());
 
