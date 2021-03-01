@@ -2,7 +2,7 @@ package se.lexicon.util;
 
 
 
-import org.springframework.context.annotation.Bean;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import java.util.Scanner;
 
@@ -14,9 +14,15 @@ public class ScannerInputService implements UserInputService {
 
 
 
+    @Autowired
+    public ScannerInputService(Scanner scanner) {
+        this.scanner = scanner;
+    }
+
+
+
     @Override
     public String getString() {
-        scanner = getScanner();
         System.out.println(" Enter name of the student: ");
         String scannerValue = scanner.nextLine();
 
@@ -31,7 +37,6 @@ public class ScannerInputService implements UserInputService {
     @Override
     public int getInt() {
         int tmpInt = 0;
-        scanner = getScanner();
         System.out.println(" Enter id of the student: ");
         String scannerValue = scanner.nextLine();
 
@@ -44,13 +49,6 @@ public class ScannerInputService implements UserInputService {
         }
 
         return tmpInt;
-    }
-
-
-
-    @Bean
-    public Scanner getScanner() {
-        return new Scanner(System.in);
     }
 
 
